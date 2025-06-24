@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unsere Erfolge – Oberüberhausen</title>
+  <title>Fotogalerie – Oberüberhausen</title>
   <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/minecraftia">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
   <style>
@@ -79,66 +79,51 @@
       }
       .burger { display: flex; }
     }
-    .page-title {
+    .gallery-title {
       font-family: 'Minecraftia', 'Montserrat', Arial, sans-serif;
-      font-size: 2.3em;
+      font-size: 2em;
       font-weight: 900;
       text-align: center;
       color: #181818;
       margin-top: 34px;
-      margin-bottom: 38px;
+      margin-bottom: 30px;
       letter-spacing: 0.02em;
     }
-    .content {
-      max-width: 1240px;
-      margin: 0 auto 55px auto;
-      padding: 0 4vw 0 4vw;
-    }
-    .video-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-      gap: 34px 28px;
-      margin-bottom: 24px;
-    }
-    .video-card {
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 3px 18px #e4b31222;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 14px 11px 18px 11px;
-      min-width: 0;
-    }
-    .video-card iframe {
-      width: 100%;
-      height: 195px;
-      max-width: 500px;
-      border-radius: 9px;
-      border: none;
-      background: #000;
-      margin-bottom: 16px;
-    }
-    .video-title {
+    .gallery-group-title {
       font-family: 'Minecraftia', 'Montserrat', Arial, sans-serif;
-      font-size: 1.32em;
+      font-size: 1.28em;
       font-weight: 900;
-      margin-bottom: 7px;
-      color: #111;
-      line-height: 1.06;
+      text-align: left;
+      color: #b28306;
+      margin: 44px 0 18px 3vw;
+      letter-spacing: 0.01em;
     }
-    .video-desc {
-      font-family: 'Montserrat', Arial, sans-serif;
-      color: #222;
-      font-size: 1em;
-      margin: 0;
-      margin-bottom: 2px;
-      line-height: 1.22;
+    .gallery-grid {
+      max-width: 1300px;
+      margin: 0 auto 0 auto;
+      padding: 0 4vw 0 4vw;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px 18px;
+    }
+    .gallery-img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      border-radius: 13px;
+      box-shadow: 0 4px 18px #e4b31222;
+      background: #fff;
+      transition: transform .22s;
+      cursor: pointer;
+    }
+    .gallery-img:hover {
+      transform: scale(1.04) rotate(-2deg);
+      box-shadow: 0 8px 34px #e4b31255;
     }
     /* Impressum Button + Modal */
     .impressum-btn {
       display: block;
-      margin: 32px auto 24px auto;
+      margin: 38px auto 24px auto;
       padding: 11px 32px;
       border: none;
       border-radius: 10px;
@@ -197,10 +182,9 @@
       color: #ad7000;
     }
     @media (max-width: 700px) {
-      .content { padding: 0 2vw 32px 2vw; }
-      .page-title { font-size: 1.5em; margin-top: 21px; margin-bottom: 16px;}
-      .video-card iframe { height: 33vw; min-height: 150px; }
-      .video-title { font-size: 1.04em; }
+      .gallery-title { font-size: 1.3em; margin-top: 21px; margin-bottom: 14px;}
+      .gallery-group-title { font-size: 1em; margin: 32px 0 8px 3vw;}
+      .gallery-grid { gap: 14px 7px; }
     }
     @media (max-width: 600px) {
       .impressum-modal { padding: 17px 2vw 13px 3vw; font-size: 0.99em; }
@@ -213,9 +197,9 @@
   <div class="links" id="navLinks">
     <a href="index.html">Home</a>
     <a href="#">Wiki</a>
-    <a href="erfolge.html" class="active">Erfolge</a>
-    <a href="gallery.html">Fotogalerie</a>
-    <a href="#">Geschichte</a>
+    <a href="erfolge.html">Erfolge</a>
+    <a href="gallery.html" class="active">Fotogalerie</a>
+    <a href="geschichte.html">Geschichte</a>
   </div>
   <div class="burger" id="burgerBtn" aria-label="Menü öffnen" tabindex="0">
     <span></span>
@@ -223,70 +207,75 @@
     <span></span>
   </div>
 </nav>
-<div class="page-title">Unsere Erfolge</div>
-<div class="content">
-  <div class="video-grid">
-    <!-- Flatworld -->
-    <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/l96KwwMBWzw" title="Flatworld" allowfullscreen></iframe>
-      <div class="video-title">Flatworld</div>
-      <div class="video-desc">Während Flatworld entstand die gesamte Idee um Oberüberhausen.<br>
-        Durch ein starkes Team seit Anfang wurden wir schnell größer.</div>
-    </div>
-    <!-- Oceanblock -->
-    <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/5LmDttvPDg4" title="Oceanblock" allowfullscreen></iframe>
-      <div class="video-title">Oceanblock</div>
-      <div class="video-desc">Wir haben uns bei Oceanblock erneut gesteigert und haben die größte Stadt auf dem Server gebaut.</div>
-    </div>
-    <!-- Kreativ Event -->
-    <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/7l1js8HDF8s" title="Kreativ Event" allowfullscreen></iframe>
-      <div class="video-title">Kreativ Event</div>
-      <div class="video-desc">
-        Wir haben während des Kreativ-Events Oberüberhausen wieder so gebaut,<br>
-        wie wir es auch sonst gebaut hätten nur mit eigenen Upgrades!
-      </div>
-    </div>
-    <!-- Zivilisation -->
-    <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/q-LH1eAgnMs" title="Zivilisation" allowfullscreen></iframe>
-      <div class="video-title">Zivilisation</div>
-      <div class="video-desc">
-        Wir haben beim Fraktions Event in der Eis-Welt eine riesige Stadt gebaut mit anderen Baustil<br>
-        und haben zusammen einen Full Nation Server geschafft.
-      </div>
-    </div>
-    <!-- Ameisenglas -->
-    <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/lmCnJNkazes" title="Ameisenglas" allowfullscreen></iframe>
-      <div class="video-title">Ameisenglas</div>
-      <div class="video-desc">
-        Während des Ameisenglas-Events haben wir auch wenn alles ein bisschen kleiner war,<br>
-        wieder etwas Großes geschaffen.
-      </div>
-    </div>
-  </div>
+<div class="gallery-title">Fotogalerie</div>
+
+<!-- Gruppe 1 -->
+<div class="gallery-group-title">Flatworld</div>
+<div class="gallery-grid">
+  <img class="gallery-img" src="gallery/flatworld1.webp" alt="kr1">
+  <img class="gallery-img" src="gallery/flat2.webp" alt="kr2">
+  <img class="gallery-img" src="gallery/flat3.webp" alt="kr3">
+  <img class="gallery-img" src="gallery/flat4.webp" alt="kr4">
+  <img class="gallery-img" src="gallery/flat5.webp" alt="kr5">
+  <img class="gallery-img" src="gallery/flat6.webp" alt="kr6">
+  <img class="gallery-img" src="gallery/flat7.webp" alt="kr6">
+  <img class="gallery-img" src="gallery/flat8.webp" alt="kr6">
+
 </div>
-  <!-- Impressum Button -->
-  <button class="impressum-btn" id="impressumBtn">Impressum</button>
-  <div class="modal-bg" id="impressumModal">
-    <div class="impressum-modal">
-      <button class="close" id="closeImpressum" aria-label="Schließen">&times;</button>
-      <h2>Impressum</h2>
-      <p>
-        Angaben gemäß § 5 DDG<br>
-        <strong>Kilian Klauer</strong><br>
-        Kenterkamp 6<br>
-        32699 Extertal<br><br>
-        Vertreten durch:<br>
-        <strong>Kilian Klauer</strong><br><br>
-        Kontakt:<br>
-        Telefon: 49-160 90708740<br>
-        E-Mail: <a href="mailto:kilian.klauer@outlook.de">kilian.klauer@outlook.de</a><br><br>
-        Impressum vom Impressum Generator der Kanzlei Hasselbach, Fachanwälte für Familienrecht
-      </p>
-    </div>
+
+<!-- Gruppe 2 -->
+<div class="gallery-group-title">Skyblock</div>
+<div class="gallery-grid">
+  <img class="gallery-img" src="gallery/sk1.webp" alt="event1">
+  <img class="gallery-img" src="gallery/sk2.webp" alt="event2">
+  <img class="gallery-img" src="gallery/sk3.webp" alt="event3">
+  <img class="gallery-img" src="gallery/sk4.webp" alt="event4">
+  <img class="gallery-img" src="gallery/sk5.webp" alt="event5">
+  <img class="gallery-img" src="gallery/sk6.webp" alt="event5">
+  <img class="gallery-img" src="gallery/sk7.webp" alt="event5">
+  <img class="gallery-img" src="gallery/sk8.webp" alt="event5">
+</div>
+
+<!-- Gruppe 3 -->
+<div class="gallery-group-title">Kreativ</div>
+<div class="gallery-grid">
+  <img class="gallery-img" src="gallery/kr1.webp" alt="best1">
+  <img class="gallery-img" src="gallery/kr2.webp" alt="best2">
+  <img class="gallery-img" src="gallery/kr3.webp" alt="best3">
+  <img class="gallery-img" src="gallery/kr4.webp" alt="best4">
+  <img class="gallery-img" src="gallery/kr5.webp" alt="best5">
+  <img class="gallery-img" src="gallery/kr6.webp" alt="best6">
+  <img class="gallery-img" src="gallery/kr7.webp" alt="best6">
+  <img class="gallery-img" src="gallery/kr8.webp" alt="best6">
+</div>
+
+<div class="gallery-group-title">Ameisenglas</div>
+<div class="gallery-grid">
+  <img class="gallery-img" src="gallery/Ameise_1.png" alt="best1">
+  <img class="gallery-img" src="gallery/Ameise_2.png" alt="best2">
+  <img class="gallery-img" src="gallery/Ameise_3.png" alt="best3">
+  <img class="gallery-img" src="gallery/Ameise_4.png" alt="best4">
+  <img class="gallery-img" src="gallery/Ameise_5.png" alt="best5">
+</div>
+
+<!-- Impressum Button + Modal -->
+<button class="impressum-btn" id="impressumBtn">Impressum</button>
+<div class="modal-bg" id="impressumModal">
+  <div class="impressum-modal">
+    <button class="close" id="closeImpressum" aria-label="Schließen">&times;</button>
+    <h2>Impressum</h2>
+    <p>
+      Angaben gemäß § 5 DDG<br>
+      <strong>Kilian Klauer</strong><br>
+      Kenterkamp 6<br>
+      32699 Extertal<br><br>
+      Vertreten durch:<br>
+      <strong>Kilian Klauer</strong><br><br>
+      Kontakt:<br>
+      Telefon: 49-160 90708740<br>
+      E-Mail: <a href="mailto:kilian.klauer@outlook.de">kilian.klauer@outlook.de</a><br><br>
+      Impressum vom Impressum Generator der Kanzlei Hasselbach, Fachanwälte für Familienrecht
+    </p>
   </div>
 </div>
 <script>

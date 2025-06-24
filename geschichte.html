@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geschichte – Oberüberhausen</title>
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/minecraftia">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            margin: 0; padding: 0;
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: #fff9ea;
+            min-height: 100vh;
+            color: #181818;
+        }
+        *, *::before, *::after { box-sizing: border-box; }
+        .navbar {
+            background: #ffdc13;
+            display: flex; justify-content: center; align-items: center;
+            position: sticky; top: 0; z-index: 20;
+            padding: 0 4vw; height: 58px;
+            font-family: 'Minecraftia', 'Montserrat', Arial, sans-serif;
+            border-bottom: 2px solid #eed900;
+        }
+        .navbar .center {
+            font-size: 1.2em; font-weight: 900; letter-spacing: 0.06em;
+            flex: 1; text-align: center; line-height: 1.2;
+        }
+        .navbar .links {
+            display: flex; gap: 2vw; align-items: center;
+        }
+        .navbar a {
+            text-decoration: none; color: #111;
+            font-size: 1.07em; font-family: inherit;
+            transition: color .2s, background .2s, box-shadow .2s;
+            padding: 10px 2px; display: inline-block;
+            border-radius: 8px;
+        }
+        .navbar a:hover { color: #d80027; background: #ffe177; }
+        .navbar a.active {
+            background: #fff6a3;
+            color: #7a5a00;
+            font-weight: 900;
+            box-shadow: 0 2px 10px #eed90044;
+            text-decoration: underline;
+        }
+        .burger {
+            display: none; flex-direction: column;
+            cursor: pointer; width: 34px; height: 34px;
+            justify-content: center; align-items: center;
+            margin-left: 12px;
+        }
+        .burger span {
+            display: block; width: 24px; height: 3px;
+            background: #222; margin: 3.5px 0;
+            border-radius: 2px; transition: 0.3s;
+        }
+        @media (max-width: 900px) {
+            .navbar { padding: 0 2vw; height: 52px; }
+            .navbar .center { font-size: 1em; padding: 0 5vw; }
+            .navbar .links {
+                display: none; flex-direction: column;
+                position: absolute; top: 52px; left: 0;
+                width: 100vw; background: #ffdc13; z-index: 999;
+                border-bottom: 2px solid #caaa10;
+            }
+            .navbar .links.open { display: flex; }
+            .navbar a {
+                padding: 15px 0; font-size: 1.1em;
+                border-bottom: 1px solid #ffe49d;
+                text-align: center; width: 100vw;
+                border-radius: 0;
+            }
+            .navbar a.active {
+                background: #fff6a3;
+                color: #7a5a00;
+                box-shadow: none;
+            }
+            .burger { display: flex; }
+        }
+        .geschichte-block {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 18px #e4b31222;
+            max-width: 860px;
+            margin: 44px auto 0 auto;
+            padding: 32px 30px 32px 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .geschichte-title {
+            font-family: 'Minecraftia', 'Montserrat', Arial, sans-serif;
+            font-size: 1.55em;
+            font-weight: 900;
+            color: #b28306;
+            text-align: center;
+            margin-bottom: 18px;
+        }
+        .geschichte-text {
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 1.08em;
+            color: #222;
+            text-align: center;
+            margin-bottom: 22px;
+            line-height: 1.44;
+        }
+        .geschichte-img {
+            max-width: 100%;
+            width: 440px;
+            border-radius: 11px;
+            box-shadow: 0 4px 18px #e4b31222;
+        }
+        @media (max-width: 700px) {
+            .geschichte-block {
+                padding: 19px 7vw 22px 7vw;
+                margin: 24px auto 0 auto;
+            }
+            .geschichte-title { font-size: 1.05em; }
+            .geschichte-text { font-size: 0.98em; }
+            .geschichte-img { width: 100%; }
+        }
+        /* Impressum Button + Modal */
+        .impressum-btn {
+            display: block;
+            margin: 38px auto 24px auto;
+            padding: 11px 32px;
+            border: none;
+            border-radius: 10px;
+            background: #ffdc13;
+            color: #7a5a00;
+            font-size: 1.15em;
+            font-family: 'Minecraftia', 'Montserrat', Arial, sans-serif;
+            box-shadow: 0 2px 10px #e4b31229;
+            cursor: pointer;
+            font-weight: 700;
+            transition: background .18s;
+        }
+        .impressum-btn:hover { background: #ffe386; }
+        .modal-bg {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(33,24,2,0.35);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-bg.open { display: flex; }
+        .impressum-modal {
+            background: #fff8ee;
+            border-radius: 18px;
+            box-shadow: 0 8px 40px #e4b31288;
+            padding: 36px 32px 26px 38px;
+            color: #333;
+            font-size: 1em;
+            line-height: 1.65;
+            font-family: 'Montserrat', Arial, sans-serif;
+            max-width: 93vw;
+            max-height: 88vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        .impressum-modal h2 {
+            font-size: 1.18em;
+            color: #d28d00;
+            font-family: 'Minecraftia', 'Montserrat', Arial, sans-serif;
+            margin-top: 0;
+        }
+        .impressum-modal .close {
+            position: absolute;
+            top: 10px; right: 12px;
+            font-size: 1.5em;
+            background: none;
+            border: none;
+            color: #d28d00;
+            font-weight: 900;
+            cursor: pointer;
+        }
+        .impressum-modal strong {
+            color: #ad7000;
+        }
+        @media (max-width: 600px) {
+            .impressum-modal { padding: 17px 2vw 13px 3vw; font-size: 0.99em; }
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar">
+    <div class="center">Oberüberhausen</div>
+    <div class="links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="#">Wiki</a>
+        <a href="erfolge.html">Erfolge</a>
+        <a href="gallery.html" class="active">Fotogalerie</a>
+        <a href="#">Geschichte</a>
+    </div>
+    <div class="burger" id="burgerBtn" aria-label="Menü öffnen" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</nav>
+
+<!-- Block 1 -->
+<div class="geschichte-block">
+    <div class="geschichte-title">Geschichte</div>
+    <div class="geschichte-text">
+        Oberüberhausen wurde während des Flatworld Events von CastCrafter gegründet.
+        Der spieler Kolord_YT kam in das Dorf, welches der Spieler Kaigooo,
+        unser aktueller Bürgermeister, gefunden hat. Sie haben zusammen Oberüberhausen gegründet.
+    </div>
+    <img class="geschichte-img" src="fotos/geschichte.webp" alt="Die Anfänge">
+</div>
+
+<!-- Block 2 -->
+<div class="geschichte-block">
+    <div class="geschichte-title"></div>
+    <div class="geschichte-text">
+        OOberüberhausen entwickelte sich stetig weiter,
+        es kamen über die Monate immer mehr Events zustande,
+        sodass immer mehr Bürger dazu kamen.
+        Nach einiger Zeit entwickelten wir unser eigenes
+        Servernetzwerk auf dem man außerhalb der Events spielen kann.
+    </div>
+    <img class="geschichte-img" src="fotos/lobby5.png" alt="Der große Aufschwung">
+</div>
+
+<!-- Block 3 -->
+<div class="geschichte-block">
+    <div class="geschichte-title"></div>
+    <div class="geschichte-text">
+        Auch das Serverteam wuchs heran, in welchem sich nun Supporter,
+        Stadträte Vize-Bürgermeister und Bürgermeister sich um die Koordination kümmern,
+        und für die (Stand: 27.11.2024) 350+ Bürger zu kümmern.
+    </div>
+    <img class="geschichte-img" src="fotos/lobby6.png" alt="Heute und in Zukunft">
+</div>
+
+<!-- Impressum Button + Modal -->
+<button class="impressum-btn" id="impressumBtn">Impressum</button>
+<div class="modal-bg" id="impressumModal">
+    <div class="impressum-modal">
+        <button class="close" id="closeImpressum" aria-label="Schließen">&times;</button>
+        <h2>Impressum</h2>
+        <p>
+            Angaben gemäß § 5 DDG<br>
+            <strong>Kilian Klauer</strong><br>
+            Kenterkamp 6<br>
+            32699 Extertal<br><br>
+            Vertreten durch:<br>
+            <strong>Kilian Klauer</strong><br><br>
+            Kontakt:<br>
+            Telefon: 49-160 90708740<br>
+            E-Mail: <a href="mailto:kilian.klauer@outlook.de">kilian.klauer@outlook.de</a><br><br>
+            Impressum vom Impressum Generator der Kanzlei Hasselbach, Fachanwälte für Familienrecht
+        </p>
+    </div>
+</div>
+<script>
+    // Mobile Navigation Script
+    const burger = document.getElementById('burgerBtn');
+    const navLinks = document.getElementById('navLinks');
+    burger.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+    });
+    burger.addEventListener('keypress', (e) => {
+        if(e.key === "Enter" || e.key === " ") {
+            navLinks.classList.toggle('open');
+        }
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+        });
+    });
+
+    // Impressum Modal
+    const impressumBtn = document.getElementById('impressumBtn');
+    const impressumModal = document.getElementById('impressumModal');
+    const closeImpressum = document.getElementById('closeImpressum');
+    impressumBtn.addEventListener('click', () => {
+        impressumModal.classList.add('open');
+    });
+    closeImpressum.addEventListener('click', () => {
+        impressumModal.classList.remove('open');
+    });
+    impressumModal.addEventListener('click', (e) => {
+        if(e.target === impressumModal) impressumModal.classList.remove('open');
+    });
+</script>
+</body>
+</html>
